@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+.todoContainer {
+  width: 100%;
+  height: 100%;
+}
+.todoContainer > .task {
+  display: inline-block;
+  margin: 1%;
+}
+
+.todoContainer > button {
+  border-radius: 50px;
+  height: 2rem;
+  width: 4rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin: 1%;
+}
+
+.syncBtn {
+  background-color: bisque;
+}
+.newTaskBtn {
+  background-color: lightblue;
+}
+.loadBtn {
+  background-color: rgb(168, 211, 183);
+}
