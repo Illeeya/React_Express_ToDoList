@@ -5,15 +5,21 @@
 .todoContainer {
   width: 100%;
   height: 100%;
+  overflow: auto;
 }
 .todoContainer > .task {
   display: inline-block;
   margin: 1%;
 }
+.todoButtons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.todoContainer > button {
+.todoButtons > button {
   border-radius: 50px;
-  height: 2rem;
+  height: 4rem;
   width: 4rem;
   border: none;
   font-size: 1rem;
