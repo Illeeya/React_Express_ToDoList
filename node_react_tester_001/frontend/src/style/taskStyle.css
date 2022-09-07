@@ -1,35 +1,43 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.taskOuterContainer{
-    margin: 1rem; 
-    background-color: rgb(56, 56, 56);
-    padding: 1rem;
-    border-radius: 500px;
-    display: inline-block;
-    counter-increment: taskCounter;
+.taskOuterContainer {
+  margin: 1rem;
+  background-color: rgb(56, 56, 56);
+  padding: 1rem;
+  border-radius: 500px;
+  display: inline-block;
+  counter-increment: taskCounter;
 }
 
-.taskInnerContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.taskInnerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.taskInnerContainer > button
-{
-    font-size: 1rem;
-    font-weight: bold;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 500px;
-    margin-left: 1rem;
+.taskInnerContainer > button {
+  font-size: 1.6rem;
+  font-weight: bold;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 500px;
+  margin-left: 1rem;
+  border: none;
 }
 
-.taskInnerContainer > input{
-    border: none;
-    background-color: inherit;
-    font-size: 1rem;
-    color: aliceblue;
+.taskInnerContainer img {
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+}
+
+.taskInnerContainer > input {
+  border: none;
+  background-color: inherit;
+  font-size: 1rem;
+  color: aliceblue;
 }

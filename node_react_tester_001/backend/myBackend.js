@@ -8,21 +8,24 @@ server.use(express.json());
 let todoState = "";
 
 server
-	.route("/")
-	.post((req, res) => {
-		todoState = JSON.stringify(req.body);
-		console.log(`Save request for data string: `, JSON.stringify(req.body));
-		// res.set("Content-Type", "text/html");
-		console.log(todoState);
-		console.log(todoState[0]);
-		res.send(`Data has been saved`);
-		// console.log(JSON.stringify({ id: "lel" }));
-		// res.send(JSON.stringify({ id: "chuj" }));
-	})
-	.get((req, res) => {
-		console.log("Get request came");
-		// let a = JSON.parse(todoState);
-		res.send(todoState);
-	});
+  .route("/")
+  .post((req, res) => {
+    todoState = JSON.stringify(req.body);
+    console.log(`Save request for data string: `, JSON.stringify(req.body));
+    res.send(`Data has been saved`);
+  })
+  .get((req, res) => {
+    console.log("Get request came");
+    // let a = JSON.parse(todoState);
+    // a.tasks = a.tasks.map((task) => {
+    //   return {
+    //     id: task.id,
+    //     content: `${task.content}Doned`,
+    //   };
+    // });
+    // console.log(a);
+    if (todoState !== "") res.status(200).send(todoState);
+    else res.status(500).send("Nothing to sync");
+  });
 
 server.listen(3001);
