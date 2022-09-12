@@ -57,7 +57,7 @@ export default function TaskContainer()
                 }
                 , body: JSON.stringify({ tasks: tasksObjects })
             }
-            fetch("http://localhost:3001", options)
+            fetch("http://192.168.0.51:3001", options)
                 .then(response => response.text())
                 .then(response => console.log(response));
         }
@@ -77,7 +77,7 @@ export default function TaskContainer()
             }
         }
 
-        fetch("http://localhost:3001", options)
+        fetch("http://192.168.0.51:3001", options)
             .then(response =>
             {
                 if (response.ok)
