@@ -41,6 +41,13 @@
   padding: 0.3% 0.8%;
 }
 
+.titleClass {
+  font-size: 5rem;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 0.3rem;
+  word-spacing: 1rem;
+}
+
 .loadingBall {
   border: 0.5rem solid #f3f3f3; /* Light grey */
   border-top: 0.5rem solid #6c6c6c; /* Blue */
