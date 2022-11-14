@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "public": "build",
+    "site": "ileetodo",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

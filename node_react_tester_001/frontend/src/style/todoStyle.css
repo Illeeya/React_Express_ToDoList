@@ -11,8 +11,9 @@
   display: inline-block;
   margin: 1%;
 }
-.todoButtons{
+.todoButtons {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

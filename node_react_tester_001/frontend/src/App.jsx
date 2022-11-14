@@ -1,10 +1,14 @@
+import IdleTester from './components/IdleTester';
+import PageController from './components/PageController';
 import TaskContainer from './components/TaskContainer';
 import './style/mainStyle.css';
 
 function App()
 {
   return (
-    <TaskContainer />
+    //<IdleTester />
+    // <TaskContainer />
+    <PageController />
   );
 }
 
