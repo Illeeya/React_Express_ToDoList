@@ -4,22 +4,24 @@ import "../style/authenticationStyle.css"
 
 export default function Authentication(props)
 {
-
-    const [wrongPass, setWrongPass] = useState(false);
-    const [isLogging, setIsLogging] = useState(false);
-    const [isRegistering, setIsRegistering] = useState(false);
-    const [registerStatus, setRegisterStatus] = useState("");
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [status, setStatus] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
 
     function sendPostRequestForUserData(username, password)
     {
-        setWrongPass(false);
+        setStatus('Logging in...');
         console.log('Trying to log in')
-        if (!isLogging)
+        if (username.length === 0 || password.length === 0)
         {
-            setIsLogging(true);
+            setStatus('Username and Password cannot be empty!');
+            return;
+        }
+        if (!isProcessing)
+        {
+            setIsProcessing(true);
             const options = {
                 method: "POST",
                 headers: {
@@ -41,20 +43,21 @@ export default function Authentication(props)
                         if (isNaN(data))
                         {
                             console.log(data);
-                            setWrongPass(true);
-                            setIsLogging(false);
+                            setStatus(data);
+                            setIsProcessing(false);
                         }
                         else
                         {
                             console.log(data, 2);
-                            setIsLogging(false);
+                            setIsProcessing(false);
                             props.loginHandler(data);
                         }
                     }
                     else 
                     {
                         console.log("No data");
-                        setIsLogging(false);
+                        setStatus("Login failed!");
+                        setIsProcessing(false);
                     }
                 }
                 )
@@ -66,15 +69,15 @@ export default function Authentication(props)
     function registerUser(user, pass)
     {
         console.log('test1')
-        if (!isRegistering)
+        if (!isProcessing)
         {
-            setIsRegistering(true)
+            setIsProcessing(true)
             console.log('test2')
             if (user.length <= 0 || pass.length <= 0)
             {
                 console.log("Need user or pass");
-                setRegisterStatus("User and Password cannot be empty!")
-                setIsRegistering(false)
+                setStatus("User and Password cannot be empty!")
+                setIsProcessing(false)
                 return;
             }
             else
@@ -96,12 +99,12 @@ export default function Authentication(props)
                     .then(data => 
                     {
                         if (data.includes('Could not add'))
-                            setRegisterStatus('User already exists')
+                            setStatus('User already exists')
                         if (data.includes('Could not register'))
-                            setRegisterStatus('Internal Error, cannot create user.')
+                            setStatus('Internal Error, cannot create user.')
                         if (data.includes('User created!'))
-                            setRegisterStatus('User created!')
-                        setIsRegistering(false)
+                            setStatus('User created!')
+                        setIsProcessing(false)
                     });
             }
         }
@@ -117,34 +120,33 @@ export default function Authentication(props)
 
 
     return (
-        <div className="authInnerContainer">
-            <h1 className="titleClass">ILEE TO DO</h1>
-            <input
-                onChange={ (event) => { setUsername(event.target.value) } }
-                value={ username }
-                placeholder="Username..."
-                type="text"
-                name="username" />
-            <input
-                onChange={ (event) => { setPassword(event.target.value) } }
-                onKeyDown={ handleEnterPress }
-                value={ password }
-                placeholder="Password"
-                type="password"
-                name="password" />
-            {
-                !isLogging
-                    ? <button onClick={ () => sendPostRequestForUserData(username, password) }>Log in</button>
-                    : <div className="loadingBall"></div>
-            }
-            <div style={ wrongPass ? {} : { visibility: 'hidden' } } className="wrongPass">Wrong username or password</div>
-            {
-                !isRegistering
-                    ? <button onClick={ () => registerUser(username, password) }>Register</button>
-                    : <div className="loadingBall"></div>
-            }
-            <div style={ registerStatus === '' ? { visibility: 'hidden' } : {} } className="wrongPass">{ registerStatus }</div>
+        <div className="authOuterContainer">
+            <div className="authInnerBackground"></div>
 
+
+            <div className="authInnerContainer">
+                <p className="titleClass">I.T.D</p>
+                <input
+                    onChange={ (event) => { setUsername(event.target.value) } }
+                    value={ username }
+                    placeholder="Username..."
+                    type="text"
+                    name="username" />
+                <input
+                    onChange={ (event) => { setPassword(event.target.value) } }
+                    onKeyDown={ handleEnterPress }
+                    value={ password }
+                    placeholder="Password..."
+                    type="password"
+                    name="password" />
+                {
+                    !isProcessing
+                        ? <><button onClick={ () => sendPostRequestForUserData(username, password) }>Log in</button><button onClick={ () => registerUser(username, password) }>Register</button></>
+                        : <div className="loadingBall"></div>
+                }
+                <div style={ status === '' ? { visibility: 'hidden' } : {} } className="wrongPass">{ status }</div>
+
+            </div>
         </div>
     )
 

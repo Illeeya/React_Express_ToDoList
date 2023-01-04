@@ -11,6 +11,8 @@ export default function TaskContainer(props)
     const [tasksObjects, setTasksObjects] = useState([]);
     const [isSynched, setIsSynched] = useState(true);
     const [isSyncing, setIsSyncing] = useState(false);
+    const [canCreateNewTask, setCanCreateNewTask] = useState(true);
+
 
     useEffect(() =>
     {
@@ -20,6 +22,19 @@ export default function TaskContainer(props)
     useEffect(() =>
     {
         setIsSynched(false);
+        {
+            tasksObjects.every(task =>
+            {
+                if (task.content.length === 0) 
+                {
+                    setCanCreateNewTask(false)
+                    return false;
+                }
+                setCanCreateNewTask(true)
+                return true;
+
+            })
+        }
     }, [tasksObjects])
 
     const onIdle = () =>
@@ -150,9 +165,12 @@ export default function TaskContainer(props)
 
     function addTask()
     {
-        const taskId = Date.now();
-        setTasksToRender(current => [...current, <Task key={ `${ taskId }usr${ props.userId }` } id={ taskId } content={ "" } remover={ removeTask } changeHandler={ updateTaskContent } reloadDateTime={ taskId } />])
-        setTasksObjects(current => [...current, { key: `${ taskId }usr${ props.userId }`, id: taskId, content: "" }]);
+        if (canCreateNewTask)
+        {
+            const taskId = Date.now();
+            setTasksToRender(current => [...current, <Task key={ `${ taskId }usr${ props.userId }` } id={ taskId } content={ "" } remover={ removeTask } changeHandler={ updateTaskContent } reloadDateTime={ taskId } />])
+            setTasksObjects(current => [...current, { key: `${ taskId }usr${ props.userId }`, id: taskId, content: "" }]);
+        }
     }
 
     function removeTask(id)

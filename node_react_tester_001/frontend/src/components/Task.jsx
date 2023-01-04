@@ -19,7 +19,7 @@ export default function Task(props)
     React.useEffect(() =>
     {
         // setContent(props.content)
-        setSize(content.length > 4 ? `${ content.length * 10 + 50 }px` : '90px');
+        setSize(content.length > 4 ? `${ content.length }ch` : '4ch');
         function handleResize()
         {
             setIsVertical(window.innerWidth > window.innerHeight ? false : true);
@@ -31,7 +31,7 @@ export default function Task(props)
     }, []);
     React.useEffect(() =>
     {
-        setSize(content.length > 4 ? `${ content.length * 10 + 50 }px` : '90px');
+        setSize(content.length > 4 ? `${ content.length }ch` : '4ch');
         // setSize(content.length > 4 ? `${ content.length * 3 + 50 }px` : '62px'); PERFECT FOR l
         // setSize(content.length > 4 ? `${ content.length * 16 + 50 }px` : '114px'); PERFECT FOR W
     }, [content]);
@@ -46,9 +46,10 @@ export default function Task(props)
             <div className="taskInnerContainer">
                 <input maxLength={ 25 } style={ isVertical ? { width: '100%', fontSize: `${ winWidth * 0.003 }rem` } : { width: size } } type="text" onChange={ (event) => 
                 {
+
                     props.changeHandler(props.id, event.target.value)
                     setContent(event.target.value)
-                } } value={ content } />
+                } } value={ content } contentEditable />
                 <button onClick={ () =>
                     props.remover(props.id)
                 }><img alt="" src="img/delete.png" /></button>
