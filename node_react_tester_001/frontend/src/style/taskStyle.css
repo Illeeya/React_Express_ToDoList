@@ -74,11 +74,14 @@
     display: flex;
     justify-content: space-between;
   }
+  .taskInnerContainer > input {
+    font-size: 2rem;
+  }
 
   .taskInnerContainer > button {
     font-weight: bold;
-    height: 10vmin;
-    width: 10vmin;
+    height: 15vmin;
+    width: 15vmin;
     border-radius: 500px;
     margin-left: 1rem;
     border: none;

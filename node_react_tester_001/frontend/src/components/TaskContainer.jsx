@@ -22,19 +22,19 @@ export default function TaskContainer(props)
     useEffect(() =>
     {
         setIsSynched(false);
-        {
-            tasksObjects.every(task =>
-            {
-                if (task.content.length === 0) 
-                {
-                    setCanCreateNewTask(false)
-                    return false;
-                }
-                setCanCreateNewTask(true)
-                return true;
 
-            })
-        }
+        tasksObjects.every(task =>
+        {
+            if (task.content.length === 0) 
+            {
+                setCanCreateNewTask(false)
+                return false;
+            }
+            setCanCreateNewTask(true)
+            return true;
+
+        })
+
     }, [tasksObjects])
 
     const onIdle = () =>

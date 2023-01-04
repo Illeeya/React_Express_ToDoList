@@ -44,7 +44,7 @@ export default function Task(props)
     return (
         <div className="taskOuterContainer">
             <div className="taskInnerContainer">
-                <input maxLength={ 25 } style={ isVertical ? { width: '100%', fontSize: `${ winWidth * 0.003 }rem` } : { width: size } } type="text" onChange={ (event) => 
+                <input maxLength={ 25 } style={ isVertical ? { width: '100%', fontSize: `${ winWidth * 0.007 }rem` } : { width: size } } type="text" onChange={ (event) => 
                 {
 
                     props.changeHandler(props.id, event.target.value)

@@ -1,5 +1,5 @@
-import Authentication from "./Authentication"
-import { useEffect, useState } from "react";
+import SoloAuthentication from "./SoloAuthentication"
+import { useState } from "react";
 import TaskContainer from "./TaskContainer";
 
 export default function PageController()
@@ -25,7 +25,7 @@ export default function PageController()
         <>
             {
                 !isLoggedIn
-                    ? <Authentication loginHandler={ logIn } />
+                    ? <SoloAuthentication loginHandler={ logIn } />
                     : <TaskContainer userId={ userId } />
             }
         </>

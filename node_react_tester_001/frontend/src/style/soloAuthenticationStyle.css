@@ -1,0 +1,103 @@
+.authOuterContainer {
+  background-image: url(../../public/img/authBg.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authInnerBackground {
+  position: absolute;
+  background-color: black;
+  width: 70vmin;
+  height: 70vmin;
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.95);
+  filter: blur(20px);
+}
+
+.authInnerContainer {
+  width: 40%;
+  height: 70%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+}
+.authInnerContainer > * {
+  margin: 0.5rem 0;
+}
+
+.authInnerContainer > input {
+  font-size: 2rem;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px rgba(255, 255, 255, 0.5) solid;
+  font-weight: bold;
+  width: 50vmin;
+  padding: 1% 3%;
+  border-radius: 500px;
+}
+
+.authInnerContainer > button {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: aliceblue;
+  background-color: rgb(71, 71, 71);
+  border-radius: 500px;
+  border: none;
+  padding: 1% 3%;
+}
+
+.titleClass {
+  font-size: 5rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: aliceblue;
+  font-weight: bold;
+  letter-spacing: 0.3rem;
+  word-spacing: 1rem;
+}
+
+.loadingBall {
+  border: 0.5rem solid #f3f3f3; /* Light grey */
+  border-top: 0.5rem solid #6c6c6c; /* Blue */
+  border-radius: 50%;
+
+  width: 6rem;
+  height: 6rem;
+  animation: spin 2s linear infinite;
+}
+
+.wrongPass {
+  width: 50vmin;
+  text-align: center;
+  min-height: 1.7rem;
+  font-size: 1.7rem;
+  color: rgb(212, 212, 212);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (orientation: portrait) {
+  .authInnerContainer > input {
+    width: 90%;
+    padding: 4% 5%;
+    font-size: 3rem;
+  }
+
+  .authInnerContainer > button {
+    font-size: 3rem;
+    padding: 4% 5%;
+  }
+}
